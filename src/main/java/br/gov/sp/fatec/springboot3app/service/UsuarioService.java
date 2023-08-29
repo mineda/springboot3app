@@ -35,6 +35,17 @@ public class UsuarioService implements IUsuarioService{
                 usuario.getSenha().isBlank()) {
             throw new IllegalArgumentException("Dados inválidos!");
         }
+        Set<Autorizacao> autorizacoes = usuario.getAutorizacoes();
+        usuario.setAutorizacoes(new HashSet<Autorizacao>());
+        usuario = usuarioRepo.save(usuario);
+        if(!autorizacoes.isEmpty()) {
+            for(Autorizacao autorizacao: autorizacoes) {
+                Autorizacao autorizacaoBd = buscarAutorizacaoPorId(autorizacao.getId());
+                autorizacaoBd.getUsuarios().add(usuario);
+                usuario.getAutorizacoes().add(autRepo.save(autorizacaoBd));
+            }
+        }
+
         return usuarioRepo.save(usuario);
     }
 
