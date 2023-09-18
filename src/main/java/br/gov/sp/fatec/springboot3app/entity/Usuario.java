@@ -1,5 +1,6 @@
 package br.gov.sp.fatec.springboot3app.entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -33,11 +34,15 @@ public class Usuario {
     private Set<Autorizacao> autorizacoes;
 
     public Usuario(String nome, String senha) {
+        this();
         this.nome = nome;
         this.senha = senha;
     }
 
-    public Usuario() {}
+    public Usuario() {
+        this.anotacoes = new HashSet<Anotacao>();
+        this.autorizacoes = new HashSet<Autorizacao>();
+    }
 
     public Long getId() {
         return id;
