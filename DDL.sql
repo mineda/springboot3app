@@ -42,6 +42,15 @@ create table ant_anotacao (
   foreign key ant_usr_fk (ant_usr_id) references usr_usuario(usr_id)
 );
 
+create table ent_entrega (
+  ent_id bigint primary key auto_increment,
+  ent_descricao varchar(100) not null,
+  ent_data_hora_cadastro datetime not null,
+  ent_data_hora_limite datetime not null,
+  ent_peso int not null,
+  ent_observacoes varchar(200)
+);
+
 insert into usr_usuario (usr_nome, usr_senha)
   values ('admin', '$2a$10$i3.Z8Yv1Fwl0I5SNjdCGkOTRGQjGvHjh/gMZhdc3e7LIovAklqM6C');
 insert into aut_autorizacao (aut_nome)
@@ -49,4 +58,8 @@ insert into aut_autorizacao (aut_nome)
 insert into uau_usuario_autorizacao (usr_id, aut_id) 
   values (1, 1);
 insert into ant_anotacao(ant_texto, ant_data_hora, ant_usr_id)
-  values('Meu novo projeto', '2023-08-01 19:10', 1);
+  values ('Meu novo projeto', '2023-08-01 19:10', 1);
+insert into ent_entrega (ent_descricao, ent_data_hora_cadastro, ent_data_hora_limite, ent_peso)
+  values ('Teste 1', current_timestamp(), '2023-10-5 23:59:59', 3),
+         ('Teste 2', current_timestamp(), '2023-10-12 23:59:59', 3);
+
