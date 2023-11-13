@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.gov.sp.fatec.springboot3app.entity.Usuario;
 import br.gov.sp.fatec.springboot3app.entity.Vocabulo;
-import br.gov.sp.fatec.springboot3app.service.IUsuarioService;
 import br.gov.sp.fatec.springboot3app.service.VocabuloService;
 
 @RestController

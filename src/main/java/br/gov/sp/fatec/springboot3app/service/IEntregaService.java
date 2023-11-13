@@ -10,5 +10,7 @@ public interface IEntregaService {
     public List<Entrega> buscarDataLimiteSuperior(LocalDateTime limite);
 
     public List<Entrega> buscarTodas();
+
+    public Entrega novaEntrega(Entrega entrega);
     
 }

@@ -51,6 +51,15 @@ create table ent_entrega (
   ent_observacoes varchar(200)
 );
 
+create table voc_vocabulo (
+ voc_id bigint primary key auto_increment,
+ voc_termo varchar(100) not null,
+ voc_significado varchar(200) not null,
+ voc_versao int not null default 0,
+ voc_data_hora_cadastro datetime not null,
+ voc_data_hora_desativacao datetime
+);
+
 insert into usr_usuario (usr_nome, usr_senha)
   values ('admin', '$2a$10$i3.Z8Yv1Fwl0I5SNjdCGkOTRGQjGvHjh/gMZhdc3e7LIovAklqM6C');
 insert into aut_autorizacao (aut_nome)
@@ -62,4 +71,6 @@ insert into ant_anotacao(ant_texto, ant_data_hora, ant_usr_id)
 insert into ent_entrega (ent_descricao, ent_data_hora_cadastro, ent_data_hora_limite, ent_peso)
   values ('Teste 1', current_timestamp(), '2023-10-5 23:59:59', 3),
          ('Teste 2', current_timestamp(), '2023-10-12 23:59:59', 3);
-
+insert into voc_vocabulo (voc_termo, voc_significado, voc_versao, voc_data_hora_cadastro)
+  values ('tupla', 'linha de uma tabela', 1, '2023-10-01 10:00:06'),
+  ('tupla', 'conjunto de atributos relacionados', 2, current_timestamp());
