@@ -60,6 +60,24 @@ create table voc_vocabulo (
  voc_data_hora_desativacao datetime
 );
 
+create table emp_empregado (
+  emp_id bigint primary key auto_increment,
+  emp_nome_completo varchar(100) not null,
+  emp_ctps bigint unique not null,
+  emp_data_hora_cadastro datetime not null,
+  emp_email varchar(30) unique not null,
+  emp_carga_horaria float
+);
+
+create table tmp_temperatura (
+  tmp_id bigint primary key auto_increment,
+  tmp_data_hora datetime not null,
+  tmp_medida float not null,
+  tmp_umidade float,
+  tmp_vento float,
+  tmp_particulas float
+);
+
 insert into usr_usuario (usr_nome, usr_senha)
   values ('admin', '$2a$10$i3.Z8Yv1Fwl0I5SNjdCGkOTRGQjGvHjh/gMZhdc3e7LIovAklqM6C');
 insert into aut_autorizacao (aut_nome)
@@ -74,3 +92,9 @@ insert into ent_entrega (ent_descricao, ent_data_hora_cadastro, ent_data_hora_li
 insert into voc_vocabulo (voc_termo, voc_significado, voc_versao, voc_data_hora_cadastro)
   values ('tupla', 'linha de uma tabela', 1, '2023-10-01 10:00:06'),
   ('tupla', 'conjunto de atributos relacionados', 2, current_timestamp());
+insert into emp_empregado (emp_nome_completo, emp_ctps, emp_data_hora_cadastro, emp_email)
+  values ('Charles Smith', 12345678910, current_timestamp(), 'chsmith@email.com'),
+         ('Ann Doe', 23456743212, current_timestamp(), 'anndoe@email.com');
+insert into tmp_temperatura (tmp_data_hora, tmp_medida, tmp_umidade, tmp_particulas)
+  values ('2023-10-24 10:00', 25.4, null, 31.3),
+         ('2023-10-24 11:00', 26.1, 43.2, null);
